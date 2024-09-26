@@ -13,11 +13,17 @@ class ApartmentsController < ApplicationController
       redirect_to apartments_path
     else
       render :new
+      alert("Something went wrong")
     end
   end
 
+  def destroy
+    Apartment.destroy_all
+    redirect_to apartments_path
+  end
   private
 
   def apartment_params
+    params.require(:apartment).permit(:title, :address, :address_url, :price_per_cleaning, :sqm, :number_of_rooms)
   end
 end

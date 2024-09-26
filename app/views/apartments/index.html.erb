@@ -1,1 +1,21 @@
-<h1>Test</h1>
+<h1>List of apartments</h1>
+
+<%= link_to "Add", new_apartment_path %>
+
+<div class="container">
+  <div >
+
+    <% @apartments.each do |apartment| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Appartement N°<%= apartment.id %></h5>
+          <p class="card-subtitle mb-2 text-muted">Adresse :<%= apartment.address %></p>
+          <p class="card-text">Price per cleaning: <%= apartment.price_per_cleaning %></p>
+          <p class="card-text">Square meters: <%= apartment.sqm %></p>
+          <p class="card-text">Number of rooms: <%= apartment.number_of_rooms %></p>
+          <%= link_to "Show", apartment_path(apartment)%>
+        </div>
+    <% end %>
+      </div>
+  </div>
+</div>
