@@ -1,0 +1,22 @@
+.btn-action{
+  background-color: $blue;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  a{
+    color: white;
+  }
+  border: 1px, solid, $blue;
+  transition: transform 0.3s ease;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
