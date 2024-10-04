@@ -47,6 +47,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:nb_appartments, user_attributes: [:email, :password, :password_confirmation])
+    params.require(:client).permit(:nb_apartments, user_attributes: [:email, :password, :password_confirmation])
   end
 end
