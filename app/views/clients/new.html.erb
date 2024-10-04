@@ -1,0 +1,38 @@
+<h1>Create a New Client</h1>
+
+<% if @client.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+    <ul>
+      <% @client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for(@client) do |f| %>
+
+  <!-- Nested User fields -->
+  <%= f.simple_fields_for :user do |user_form| %>
+    <div class="field">
+      <%= user_form.input :email, required: true %>
+    </div>
+    <div class="field">
+      <%= user_form.input :password, required: true %>
+    </div>
+    <div class="field">
+      <%= user_form.input :password_confirmation, required: true %>
+    </div>
+  <% end %>
+
+  <!-- Specific Client fields -->
+  <!-- Specific Client fields -->
+  <div class="field">
+    <%= f.input :nb_appartments, required: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Client" %>
+  </div>
+<% end %>

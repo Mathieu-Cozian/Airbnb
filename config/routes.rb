@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :apartments, only: [:index, :show, :new, :create, :destroy]
   resources :cleaners
+  resources :clients
 end
