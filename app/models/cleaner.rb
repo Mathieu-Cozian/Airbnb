@@ -1,5 +1,5 @@
 class Cleaner < ApplicationRecord
   belongs_to :user
   validates :address, presence: true
-  validates :status, presence: true
+  accepts_nested_attributes_for :user
 end

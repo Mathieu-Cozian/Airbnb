@@ -1,4 +1,6 @@
 class CleanersController < ApplicationController
+
+  before_action :set_cleaner, only: %i[show edit update destroy]
   # GET /cleaners
   def index
     @cleaners = Cleaner.all
@@ -11,7 +13,7 @@ class CleanersController < ApplicationController
   # GET /cleaners/new
   def new
     @cleaner = Cleaner.new
-    @cleaner.build_user # Prepare a nested user form (if needed)
+    @cleaner.build_user
   end
 
   # POST /cleaners
@@ -53,6 +55,6 @@ class CleanersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def cleaner_params
-    params.require(:cleaner).permit(:service_area, :special_equipment, user_attributes: [:name, :email, :password])
+    params.require(:cleaner).permit(:address, user_attributes: [:name, :email, :password, :password_confirmation])
   end
 end

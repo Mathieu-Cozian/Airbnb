@@ -1,0 +1,51 @@
+<h1>Creation of Cleaner</h1>
+
+<div class="container">
+
+<!--Controle des erreurs -->
+  <% if @cleaner.errors.any? || (@cleaner.user && @cleaner.user.errors.any?) %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cleaner.errors.count + @cleaner.user.errors.count, "error") %> prohibited this cleaner from being saved:</h2>
+
+      <ul>
+        <% @cleaner.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+
+        <% if @cleaner.user %>
+          <% @cleaner.user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--Formulaire de création de cleaner-->
+
+    <%= simple_form_for(@cleaner) do |f| %>
+
+    <!--  General User Info -->
+      <%= f.simple_fields_for :user do |user_form| %>
+        <div class="field">
+          <%= user_form.input :email, required: :true %>
+        </div>
+        <div class="field">
+          <%= user_form.input :password, required: :true %>
+        </div>
+        <div class="field">
+          <%= user_form.input :password_confirmation, required: :true %>
+        </div>
+      <% end %>
+    <!--  Specific Cleaner info -->
+      <div class="field">
+        <%=  f.input :address, required: :true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create Cleaner" %>
+      </div>
+    <% end %>
+
+
+</div>
