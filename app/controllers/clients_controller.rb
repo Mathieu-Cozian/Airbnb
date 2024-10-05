@@ -19,7 +19,8 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to @client, notice: "Client was successfully created."
     else
-      render :new, alert: "client was not created."
+      Rails.logger.info @client.errors.full_messages.join(", ")
+      render :new, alert: "Client was not created."
     end
   end
 
@@ -49,4 +50,5 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(:nb_apartments, user_attributes: [:email, :password, :password_confirmation])
   end
+
 end
