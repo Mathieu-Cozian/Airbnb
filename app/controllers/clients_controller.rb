@@ -41,6 +41,9 @@ class ClientsController < ApplicationController
     redirect_to clients_path, notice: "Client was successfully destroyed."
   end
 
+  def search_client
+    @clients
+  end
   private
 
   def set_client

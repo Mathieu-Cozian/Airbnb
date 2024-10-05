@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../javascript/registerControllers.js"],
+  "sourcesContent": ["export function registerControllers(application, controllers) {\n    for (const controllerName in controllers) {\n        if (controllers.hasOwnProperty(controllerName)) {\n            const controller = controllers[controllerName];\n            const identifier = controllerName\n                .replace(/^.*[\\\\/]/, \"\") // Remove the path (leaving the file name)\n                .replace(\"_controller.js\", \"\") // Remove the \"_controller.js\" part\n                .replace(/_/g, \"-\"); // Convert underscores to dashes\n\n            application.register(identifier, controller.default);\n        }\n    }\n}\n"],
+  "mappings": ";;AAAO,WAAS,oBAAoB,aAAa,aAAa;AAC1D,eAAW,kBAAkB,aAAa;AACtC,UAAI,YAAY,eAAe,cAAc,GAAG;AAC5C,cAAM,aAAa,YAAY,cAAc;AAC7C,cAAM,aAAa,eACd,QAAQ,YAAY,EAAE,EACtB,QAAQ,kBAAkB,EAAE,EAC5B,QAAQ,MAAM,GAAG;AAEtB,oBAAY,SAAS,YAAY,WAAW,OAAO;AAAA,MACvD;AAAA,IACJ;AAAA,EACJ;",
+  "names": []
+}
